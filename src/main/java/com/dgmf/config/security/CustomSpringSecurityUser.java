@@ -1,4 +1,4 @@
-package com.dgmf.security;
+package com.dgmf.config.security;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
