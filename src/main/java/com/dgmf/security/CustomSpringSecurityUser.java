@@ -4,24 +4,37 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 
-// Custom User Class to Define User Credentials (authorities, password,
-// username, etc...)
-public class SpringSecurityUser implements UserDetails {
+// Custom User Class to Explain to Spring Security our Definition
+// of a User at the Application Security Level and Define this
+// Custom User Credentials (authorities, password, username)
+public class CustomSpringSecurityUser implements UserDetails {
+    private String username;
+    private String password;
+    private String authority;
+
+    public CustomSpringSecurityUser(
+            String username, String password, String authority
+    ) {
+        this.username = username;
+        this.password = password;
+        this.authority = authority;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return List.of(() -> authority);
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 
     @Override
